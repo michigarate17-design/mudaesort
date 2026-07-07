@@ -1,5 +1,6 @@
 [
-  {"name": "Character 1"},
-  {"name": "Character 2"},
-  {"name": "Character 3"}
+    {"name":"Character 1"},
+    {"name":"Character 2"},
+    {"name":"Character 3"},
+    {"name":"Character 4"}
 ]

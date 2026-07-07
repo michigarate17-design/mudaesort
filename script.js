@@ -1,51 +1,67 @@
 let characters = [];
-let current = [];
+let ranking = [];
+let pair = [];
+let history = [];
 let comparisons = 0;
 
 fetch("data/characters.json")
-.then(r => r.json())
+.then(res => res.json())
 .then(data => {
     characters = data;
-    startSort();
+    ranking = [...characters];
+    nextPair();
 });
 
-function startSort() {
-    current = [...characters];
-    showPair();
-}
-
-function showPair() {
-    const box = document.getElementById("characters");
-    if (current.length < 2) {
-        box.innerHTML = "<h2>Ranking terminado</h2>";
+function nextPair() {
+    if (ranking.length < 2) {
+        finish();
         return;
     }
 
-    box.innerHTML = `
-    <div class="card">${current[0].name}</div>
-    <div class="card">${current[1].name}</div>
+    pair = [ranking[0], ranking[1]];
+    render();
+}
+
+function render() {
+    document.getElementById("characters").innerHTML = `
+        <div class="card">${pair[0].name}</div>
+        <div class="card">${pair[1].name}</div>
     `;
-    update();
+
+    document.getElementById("counter").innerText =
+        "Comparaciones: " + comparisons;
+
+    document.getElementById("progress").innerText =
+        "Personajes restantes: " + ranking.length;
 }
 
 function vote(choice) {
     comparisons++;
 
-    if (choice === "left") {
-        current.push(current.shift());
-    } else if (choice === "right") {
-        let a = current.shift();
-        current.splice(1, 0, a);
-    } else if (choice === "tie") {
-        current.push(current.shift());
-    } else if (choice === "skip") {
-        current.splice(0, 2);
+    history.push({
+        left: pair[0].name,
+        right: pair[1].name,
+        choice: choice
+    });
+
+    if (choice === "right") {
+        [ranking[0], ranking[1]] = [ranking[1], ranking[0]];
     }
 
-    showPair();
+    if (choice === "skip") {
+        ranking.shift();
+    }
+
+    if (choice === "tie") {
+        ranking.push(ranking.shift());
+    }
+
+    nextPair();
 }
 
-function update() {
-    document.getElementById("counter").innerText =
-        "Comparaciones: " + comparisons;
+function finish() {
+    document.getElementById("characters").innerHTML =
+        "<h2>Ranking generado</h2><pre>" +
+        ranking.map((c,i)=>`${i+1}. ${c.name}`).join("\n") +
+        "</pre>";
 }
