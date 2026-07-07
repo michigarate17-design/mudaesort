@@ -1,1 +1,1 @@
-window.sorter={characters:[],index:0,getPair(){return [this.characters[this.index%this.characters.length],this.characters[(this.index+1)%this.characters.length]];},next(){this.index++;}};
+window.sorter={characters:[],index:0,comparisons:0,getPair(){return[this.characters[this.index%this.characters.length],this.characters[(this.index+1)%this.characters.length]];},choose(r){this.comparisons++;this.index++;return r;},progress(){return this.characters.length<2?0:Math.min(100,Math.round(this.index/(this.characters.length-1)*100));}};

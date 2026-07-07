@@ -1,2 +1,2 @@
 fetch('data/characters.json').then(r=>r.json()).then(d=>{sorter.characters=d;render();});
-['leftBtn','rightBtn','tieBtn','skipBtn'].forEach(id=>document.getElementById(id).onclick=()=>{sorter.next();render();});
+['left','right','tie','skip'].forEach(x=>document.getElementById(x+'Btn').onclick=()=>{sorter.choose(x);render();});
