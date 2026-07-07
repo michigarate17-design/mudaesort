@@ -1,24 +1,25 @@
-<!doctype html><html><head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width,initial-scale=1'>
-<link rel='stylesheet' href='assets/styles.css'>
-<title>Min's Mudae Sorter v0.4</title></head><body>
-<div class='container'>
-<h1>✨ Min's Mudae Sorter ✨</h1>
-<p>Choose the character you prefer.</p>
-<div class='progress'><div id='fill'></div></div>
-<p id='progressText'>0%</p>
-<div class='cards'>
-<div class='card' id='leftCard'></div>
-<div class='vs'>VS</div>
-<div class='card' id='rightCard'></div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Sort Mudae v0.5</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Sort Mudae v0.5</h1>
+
+<div id="app">
+  <div id="progress"></div>
+  <div id="characters"></div>
+  <div class="buttons">
+    <button onclick="vote('left')">LEFT</button>
+    <button onclick="vote('tie')">TIE</button>
+    <button onclick="vote('right')">RIGHT</button>
+    <button onclick="vote('skip')">SKIP</button>
+  </div>
+  <p id="counter"></p>
 </div>
-<div class='buttons'>
-<button id='leftBtn'>⬅ LEFT</button>
-<button id='tieBtn'>🤝 TIE</button>
-<button id='rightBtn'>RIGHT ➡</button>
-<button id='skipBtn'>⏭ SKIP</button>
-</div>
-<p id='status'></p>
-</div>
-<script src='js/sorter.js'></script><script src='js/ui.js'></script><script src='js/app.js'></script>
-</body></html>
+
+<script src="script.js"></script>
+</body>
+</html>
