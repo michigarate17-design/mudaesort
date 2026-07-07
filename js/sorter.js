@@ -1,0 +1,1 @@
+window.sorter={characters:[],index:0,getPair(){return [this.characters[this.index%this.characters.length],this.characters[(this.index+1)%this.characters.length]];},next(){this.index++;}};

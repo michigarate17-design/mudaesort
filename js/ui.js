@@ -1,0 +1,1 @@
+window.render=function(){const[p1,p2]=sorter.getPair();left.textContent=p1.name;right.textContent=p2.name;progress.textContent=Math.round((sorter.index/Math.max(1,sorter.characters.length-1))*100)+'%';fill.style.width=progress.textContent;}
