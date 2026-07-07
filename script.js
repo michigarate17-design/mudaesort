@@ -1,1 +1,1 @@
-let c=[],i=0;fetch('data.json').then(r=>r.json()).then(d=>{c=d;n();});function n(){left.textContent=c[i%c.length].name;right.textContent=c[(i+1)%c.length].name;let p=(i/(c.length-1))*100;bar.style.width=p+'%';pct.textContent=Math.round(p)+'%';status.textContent='v0.1 interface demo';}function choose(){i=(i+1)%c.length;n();}
+fetch('data.json').then(r=>r.json()).then(d=>{l.textContent=d[0].name;r.textContent=d[1].name;});
